@@ -39,6 +39,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: '/'
         },
         blog: {
           showReadingTime: true,
@@ -70,7 +71,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/AlgoGence/composebook',
             label: 'GitHub',
             position: 'right',
           },
@@ -114,7 +115,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/AlgoGence/composebook',
               },
             ],
           },
