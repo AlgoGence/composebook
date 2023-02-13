@@ -6,6 +6,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+    scripts: [
+        "/scripts/myjs.js"
+    ],
   title: 'ComposeBook',
   tagline: 'Comprehensive Guide for Jetpack Compose',
   favicon: 'img/favicon.ico',
@@ -30,6 +33,16 @@ const config = {
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
+    path: 'i18n',
+        localeConfigs: {
+          en: {
+            label: 'English',
+            direction: 'ltr',
+            htmlLang: 'en-US',
+            calendar: 'gregory',
+            path: 'en',
+          },
+        },
   },
 
   presets: [
@@ -54,8 +67,14 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+        metadata: [
+            {
+                name: 'keywords',
+                content: 'andrid, jetpack compose, compose, getting started with jetpack compose, jetpack compose version upgrade, modern ui with jetpack compose'
+            }
+        ],
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.png',
+      image: 'img/compose-book-social-card.png',
       navbar: {
         title: 'ComposeBook',
         logo: {
@@ -69,7 +88,7 @@ const config = {
             position: 'left',
             label: 'Introduction',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          //{to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/AlgoGence/composebook',
             label: 'GitHub',
@@ -89,7 +108,7 @@ const config = {
               },
             ],
           },
-          {
+          /*{
             title: 'Community',
             items: [
               {
@@ -105,8 +124,8 @@ const config = {
                 href: 'https://twitter.com/docusaurus',
               },
             ],
-          },
-          {
+          },*/
+          /*{
             title: 'More',
             items: [
               {
@@ -118,7 +137,7 @@ const config = {
                 href: 'https://github.com/AlgoGence/composebook',
               },
             ],
-          },
+          },*/
         ],
         copyright: `Copyright © ${new Date().getFullYear()} AlgoGence. Built with Docusaurus.`,
       },

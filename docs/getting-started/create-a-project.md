@@ -1,6 +1,7 @@
 ---
 id: create-a-project
 slug: /getting-started/create-a-project
+keywords: [create a android jetpack compose project]
 ---
 
 # Create a project
@@ -9,6 +10,6 @@ slug: /getting-started/create-a-project
 2. Create a New Project
 3. Select Empty Compose Activity
 
-![](/img/select_empty_compose_activity.png)
+![select empty compose activity template](/img/select_empty_compose_activity.png)
 
 4. Complete the project setup

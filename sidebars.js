@@ -19,7 +19,11 @@ const sidebars = {
   // But you can create a sidebar manually
 
   tutorialSidebar: [
-    'introduction',
+    {
+        label: "Introduction",
+        id: 'introduction',
+        type: 'doc'
+    },
     {
       type: 'category',
       label: 'Getting Started',
@@ -31,6 +35,7 @@ const sidebars = {
         'getting-started/how-compose-works',
         'getting-started/basic-ui',
         'getting-started/upgradation',
+        'getting-started/simple-calculator',
       ],
     },
   ],

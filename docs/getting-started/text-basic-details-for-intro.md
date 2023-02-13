@@ -1,6 +1,7 @@
 ---
 id: text-basic-details-for-intro
 slug: /getting-started/text-basic-details-for-intro
+keywords: [text in jetpack compose, how to show text in jetpack compose]
 ---
 
 # Text
@@ -13,11 +14,11 @@ Suppose we want to show ***Hello World*** then we can use the following code:
 Text("Hello World")
 ```
 
-![](/img/hello-world-text.png)
+![hello world text in jetpack compose](/img/hello-world-text.png)
 
 We will know more about `Text` later.
 
-# What is it actually?
+## What is it actually?
 
 `Text` is a kotlin function, but treated little differently.
 

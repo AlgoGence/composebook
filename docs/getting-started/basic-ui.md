@@ -1,13 +1,14 @@
 ---
 id: basic-ui
 slug: /getting-started/basic-ui
+keywords: [basic ui in jetpack compose, button in jetpack compose, text in jetpack compose, column in jetpack compose, layout, what is layout]
 ---
 
 # Basic UI
 
 Now we will create a very basic UI like below:
 
-![](/img/basic-ui.png)
+![basic ui in jetpac compose](/img/basic-ui.png)
 
 ## Layout analysis
 
@@ -83,6 +84,6 @@ Column{
 }
 ```
 
-# Button
+## Button
 
 The button need `content`(the text) and `onclick` callback. As of now we will do nothing `onClick` event. So, it is empty.
