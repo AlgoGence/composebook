@@ -55,19 +55,19 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/docusaurus-social-card.png',
       navbar: {
-        title: 'My Site',
+        title: 'ComposeBook',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'ComposeBook',
           src: 'img/compose_book_logo.svg',
         },
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'introduction',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Introduction',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
@@ -120,11 +120,12 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} AlgoGence. Built with Docusaurus.`,
       },
       prism: {
-        theme: lightCodeTheme,
+        theme: require('prism-react-renderer/themes/dracula'),//lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['kotlin']
       },
     }),
 };
