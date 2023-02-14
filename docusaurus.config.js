@@ -6,6 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+
     scripts: [
         "/scripts/myjs.js"
     ],
@@ -50,6 +51,12 @@ const config = {
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
+      sitemap: {
+                changefreq: 'weekly',
+                priority: 0.5,
+                ignorePatterns: ['/tags/**'],
+                filename: 'sitemap.xml',
+              },
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/'
@@ -70,7 +77,7 @@ const config = {
         metadata: [
             {
                 name: 'keywords',
-                content: 'andrid, jetpack compose, compose, getting started with jetpack compose, jetpack compose version upgrade, modern ui with jetpack compose'
+                content: 'android, jetpack compose, compose, getting started with jetpack compose, jetpack compose version upgrade, modern ui with jetpack compose'
             }
         ],
       // Replace with your project's social card
@@ -82,12 +89,12 @@ const config = {
           src: 'img/compose_book_logo.svg',
         },
         items: [
-          {
+          /*{
             type: 'doc',
             docId: 'introduction',
             position: 'left',
             label: 'Introduction',
-          },
+          },*/
           //{to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/AlgoGence/composebook',

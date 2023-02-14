@@ -1,0 +1,198 @@
+---
+id: text
+slug: /guide/text
+keywords: [text, text in jetpack compose, how to show a text in jetpack compose]
+---
+
+# Text
+
+Text is a central piece of any UI, and Jetpack Compose makes it easier to display or write text.
+
+## How to show a text?
+
+If we want to show **Hello World**, then we can use the following code:
+
+```kotlin
+Text("Hello World")
+```
+
+![Text](/img/text.png)
+
+----------------------------------------------------
+
+## Color
+
+We can use the `color` parameter to specify the color
+
+```kotlin
+Text(
+    "Hello World",
+    color = Color.Red
+)
+```
+
+![Red Text](/img/red-text.png)
+
+----------------------------------------------------
+
+## Font size
+
+Use `fontSize` parameter to specify the font-size
+
+```kotlin
+Text(
+    "Hello World",
+    fontSize = 20.sp
+)
+```
+
+![Font Size of text](/img/text-font-size.png)
+
+----------------------------------------------------
+
+## Font weight: bold, normal
+
+Use the `fontWeight` parameter to specify the font-weight(bold, normal, etc.)
+
+```kotlin
+Text(
+    "Hello World",
+    fontWeight = FontWeight.Bold
+)
+```
+
+![Font weight of text](/img/font-weight.png)
+
+Few useful available weights are:
+
+* Thin
+* Normal
+* Medium
+* Bold, etc.
+
+----------------------------------------------------
+
+## Font style: italic, underline, strike-through
+
+Use `fontStyle` parameter to have italic, underline, strike-through text
+
+```kotlin
+Text(
+    "Hello World",
+    fontStyle = FontStyle.Italic
+)
+```
+
+![img.png](/img/text-font-style.png)
+
+Other styles are:
+
+* Italic
+* Underline
+* StrikeThrough
+
+----------------------------------------------------
+
+## Font family
+
+Use `fontFamily` param to specify font-family.
+
+```kotlin
+Text(
+    "Hello World",
+    fontFamily = FontFamily.Cursive
+)
+```
+
+![img.png](/img/font-family.png)
+
+Default fonts are:
+
+* Cursive
+* Default
+* Serif
+* Monospace
+* SansSerif
+
+----------------------------------------------------
+
+## Letter spacing
+
+Use `letterSpacing` parameter to mention letter-spacing.
+
+```kotlin
+Text(
+    "Hello World",
+    letterSpacing = 5.sp
+)
+```
+
+![Letter spacing](/img/letter-spacing.png)
+
+----------------------------------------------------
+
+## Text align
+
+Use `textAlign` to align text.
+
+```kotlin
+Text(
+    "Hello World, again and again and again and again and again and again",
+    textAlign = TextAlign.Center
+)
+```
+
+![img.png](/img/text-align.png)
+
+----------------------------------------------------
+
+## Line height
+
+Use `lineHeight` to adjust the line-height.
+
+```kotlin
+Text(
+    "Hello World, again and again and again and again and again and again",
+    lineHeight = 50.sp
+)
+```
+
+![Line height](/img/line-height.png)
+
+----------------------------------------------------
+
+## Max lines
+
+Use `maxLines` to limit the number of lines the will span.
+
+```kotlin
+Text(
+    "Hello World, again and again and again and again and again and again then end",
+    maxLines = 1
+)
+```
+
+![Max lines](/img/max-lines.png)
+
+----------------------------------------------------
+
+## Overflow
+
+Use `overflow` parameter to handle overflow situation.
+
+```kotlin
+Text(
+    "Hello World, again and again and again and again and again and again then end",
+    maxLines = 1,
+    overflow = TextOverflow.Ellipsis
+)
+```
+
+![Text overflow](/img/overflow.png)
+
+----------------------------------------------------
+
+import Image from '@site/src/components/Image';
+
+<Image src="/img/overflow.png">Docusaurus green</Image>
+

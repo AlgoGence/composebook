@@ -25,6 +25,11 @@ const sidebars = {
         type: 'doc'
     },
     {
+        label: "What is jetpack compose?",
+        id: 'what-is-jetpack-compose',
+        type: 'doc'
+    },
+    {
       type: 'category',
       label: 'Getting Started',
       items: [
@@ -38,6 +43,15 @@ const sidebars = {
         'getting-started/simple-calculator',
       ],
     },
+    {
+          type: 'category',
+          label: 'Guide',
+          items: [
+            'guide/composable-function',
+            'guide/declarative-ui',
+            'guide/text',
+          ],
+        },
   ],
 
 };

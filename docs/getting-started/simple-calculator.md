@@ -126,3 +126,15 @@ Button(
 `Button` will have content, here the text **Calculator**.
 
 You have to mention a callback, which will be executed when button will be clicked.
+
+## How the calculator works?
+
+We have declared 3 `mutableStateOf` variables:
+
+1. `input1` for **first** textField
+2. `input2` for **second** textField
+3. `result` for the **result**
+
+Changing this variables' value will reflect in UI
+
+When the button will be clicked we will collect the values, convert to integer, do the summation and change the result value.
