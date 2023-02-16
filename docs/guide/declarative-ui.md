@@ -1,7 +1,7 @@
 ---
 id: declarative-ui
 slug: /guide/declarative-ui
-keywords: [declarative ui]
+keywords: [declarative ui, imperative ui, imperative vs declarative ui]
 ---
 
 # Declarative UI

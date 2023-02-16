@@ -49,7 +49,8 @@ const sidebars = {
           items: [
             'guide/composable-function',
             'guide/declarative-ui',
-            'guide/text',
+            'guide/text-guide',
+            'guide/color-guide',
           ],
         },
   ],

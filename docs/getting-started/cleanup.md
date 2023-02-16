@@ -10,16 +10,16 @@ We want to start from `scratch`.
 
 When your new project setup is complete you will see like below:
 
-![jetpack compose setup complete look](/img/setup-complete-look.png)
+<Image src="/img/setup-complete-look.png" alt="jetpack compose setup complete look"/>
 
 Delete the following:
 
-![](/img/default-code-selected.png)
+<Image src="/img/default-code-selected.png" alt=""/>
 
 Delete the `Greeting` line as well
 
-![](/img/greeting-error-selected.png)
+<Image src="/img/greeting-error-selected.png" alt=""/>
 
 Now your code should look like below:
 
-![jetpack compose starting code](/img/ideal-starting-code.png)
+<Image src="/img/ideal-starting-code.png" alt="jetpack compose starting code"/>

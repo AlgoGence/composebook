@@ -1,11 +1,12 @@
 ---
 id: simple-calculator
 slug: /getting-started/simple-calculator
+keywords: [make a simple calculator in jetpack compose, jetpack compose simple calculator]
 ---
 
 # Simple Calculator
 
-![](/img/simple-calculator-ui.png)
+<Image src="/img/simple-calculator-ui.png" alt=""/>
 
 We will create this simple calculator.
 

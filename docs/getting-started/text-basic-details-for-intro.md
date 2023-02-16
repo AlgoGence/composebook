@@ -1,7 +1,7 @@
 ---
 id: text-basic-details-for-intro
 slug: /getting-started/text-basic-details-for-intro
-keywords: [text in jetpack compose, how to show text in jetpack compose]
+keywords: [jetpack compose text, how to show text in jetpack compose]
 ---
 
 # Text
@@ -14,7 +14,7 @@ Suppose we want to show ***Hello World*** then we can use the following code:
 Text("Hello World")
 ```
 
-![hello world text in jetpack compose](/img/hello-world-text.png)
+<Image src="/img/hello-world-text.png" alt="hello world text in jetpack compose"/>
 
 We will know more about `Text` later.
 

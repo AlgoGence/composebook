@@ -1,7 +1,7 @@
 ---
 id: composable-function
 slug: /guide/composable-function
-keywords: [composable function, Composable annotation ]
+keywords: [composable function, Composable annotation, compose compiler]
 ---
 
 # Composable Function

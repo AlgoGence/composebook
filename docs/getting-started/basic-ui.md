@@ -1,14 +1,14 @@
 ---
 id: basic-ui
 slug: /getting-started/basic-ui
-keywords: [basic ui in jetpack compose, button in jetpack compose, text in jetpack compose, column in jetpack compose, layout, what is layout]
+keywords: [basic ui in jetpack compose, button in jetpack compose, text in jetpack compose, column in jetpack compose, layout, what is layout, jetpack compose text, jetpack compose column, jetpack compose button]
 ---
 
 # Basic UI
 
-Now we will create a very basic UI like below:
+We will create a very basic UI like below:
 
-![basic ui in jetpac compose](/img/basic-ui.png)
+<Image src="/img/basic-ui.png" alt="basic ui in jetpac compose"/>
 
 ## Layout analysis
 

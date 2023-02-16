@@ -1,0 +1,56 @@
+---
+id: color-guide
+slug: /guide/color
+keywords: [text, text in jetpack compose, how to show a text in jetpack compose, jetpack compose text color, jetpack compose text font size, jetpack compose text font weight, jetpack compose text font style, jetpack compose text font family, jetpack compose text letter spacing, jetpack compose text text align, jetpack compose text line height, jetpack compose text max lines, jetpack compose text overflow]
+---
+
+# Color
+
+Color is really very important in any UI framework.
+
+In Jetpack Compose we have various way to use color.a
+
+## Built in colors
+
+| Code              | Hex-Code   |          Color           |
+|-------------------|------------|--------------------------|
+| Color.Black       | 0xFF000000 | <Color color="#000000"/> |
+| Color.DarkGray    | 0xFF444444 | <Color color="#444444"/> |
+| Color.Gray        | 0xFF888888 | <Color color="#888888"/> |
+| Color.LightGray   | 0xFFCCCCCC | <Color color="#CCCCCC"/> |
+| Color.White       | 0xFFFFFFFF | <Color color="#FFFFFF"/> |
+| Color.Red         | 0xFFFF0000 | <Color color="#FF0000"/> |
+| Color.Green       | 0xFF00FF00 | <Color color="#00FF00"/> |
+| Color.Blue        | 0xFF0000FF | <Color color="#0000FF"/> |
+| Color.Yellow      | 0xFFFFFF00 | <Color color="#FFFF00"/> |
+| Color.Cyan        | 0xFF00FFFF | <Color color="#00FFFF"/> |
+| Color.Magenta     | 0xFFFF00FF | <Color color="#FF00FF"/> |
+| Color.Transparent | 0x00000000 | <Color color="#00000000"/> |
+
+## Hex code
+
+We can use hex code as well for any custom color.
+
+```kotlin
+Color(0xff00ffa2)//100% opacity
+```
+
+<Color color="#00ffa2" width="180px" height="80px" margin="24px"/>
+
+
+```kotlin
+Color(0x3200ffa2)//50% opacity
+```
+
+## Alpha/Opacity
+
+If you are using `hex code` then control opacity directly via the first two hex digit.
+
+Color(0x`32`00ffa2)
+
+<Color color="#00ffa232" width="180px" height="80px" margin="24px"/>
+
+<NameForma></NameForma>
+
+
+

@@ -17,7 +17,7 @@ There are few things we need to upgrade.
 
 We are going to use `1.3.3`
 
-![compose ui version upgrade](/img/compose-ui-version-change-before.png)
+<Image src="/img/compose-ui-version-change-before.png" alt="compose ui version upgrade"/>
 
 Go to the `project level build.gradle` file
 
@@ -31,7 +31,7 @@ Go to the `module level build.gradle` file
 
 We will use `1.4.2`
 
-![compose compiler version upgrade](/img/compose-compiler-version-change-before.png)
+<Image src="/img/compose-compiler-version-change-before.png" alt="compose compiler version upgrade"/>
 
 Change the version to `1.4.2`
 
@@ -39,7 +39,7 @@ Change the version to `1.4.2`
 
 If you run the project you may face the following type of error.
 
-![kotlin compatibility with compose compiler version error](/img/kotlin-compatibility-with-compose-compiler-version-error.png)
+<Image src="/img/kotlin-compatibility-with-compose-compiler-version-error.png" alt="kotlin compatibility with compose compiler version error"/>
 
 It is due to the compose compiler and the kotlin version compatibility.
 
@@ -47,7 +47,7 @@ It is due to the compose compiler and the kotlin version compatibility.
 
 We have to use `1.8.10`
 
-![kotlin version change for jetpack compose](/img/kotlin-version-change-before.png)
+<Image src="/img/kotlin-version-change-before.png" alt="kotlin version change for jetpack compose"/>
 
 ## Android SDK version
 
@@ -56,13 +56,13 @@ Ensure Android SDK version 33 for:
 * compileSdk
 * targetSdk
 
-![android sdk version ensure](/img/android-sdk-version-ensure.png)
+<Image src="/img/android-sdk-version-ensure.png" alt="android sdk version ensure"/>
 
 ## How to `discover` versions?
 
 Go to [https://developer.android.com/jetpack/androidx/releases/compose#versions](https://developer.android.com/jetpack/androidx/releases/compose#versions)
 
-![jetpack compose ui latest stable versiion check](/img/compose-ui-latest-stable-version-check.png)
+<Image src="/img/compose-ui-latest-stable-version-check.png" alt="jetpack compose ui latest stable versiion check"/>
 
 Check the `compose.ui` and `compose.compiler` latest stable version.
 
@@ -70,6 +70,6 @@ Then go to [https://developer.android.com/jetpack/androidx/releases/compose-kotl
 
 Check Compose to Kotlin Compatibility Map
 
-![compose compiler kotlin compatibility check](/img/compose-compiler-to-kotlin-compatibility-check.png)
+<Image src="/img/compose-compiler-to-kotlin-compatibility-check.png" alt="compose compiler kotlin compatibility check"/>
 
 And always have the `latest andriod SDK`.

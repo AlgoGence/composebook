@@ -1,7 +1,7 @@
 ---
 id: how-compose-works
 slug: /getting-started/how-compose-works
-keywords: [how jetpack compose works internally, jetpack compose behind the screen]
+keywords: [how jetpack compose works internally, jetpack compose behind the scene]
 ---
 
 # How compose works?
@@ -53,7 +53,7 @@ fun Counter($composer: Composer) {
 
 The generated code will be then converted into a node-tree.
 
-![node tree](/img/node-tree.png)
+<Image src="/img/node-tree.png" alt="node tree"/>
 
 These nodes are directly mapped to some renderable things.
 
