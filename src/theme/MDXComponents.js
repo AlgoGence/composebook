@@ -2,11 +2,13 @@ import React from 'react';
 import MDXComponents from '@theme-original/MDXComponents';
 import Color from '@site/src/components/Color';
 import Image from '@site/src/components/Image';
-import NameForma from '@site/src/components/NameForma';
+import DecToHex from '@site/src/components/DecToHex';
+import ColorPicker from '@site/src/components/ColorPicker';
 
 export default {
   ...MDXComponents,
   Color,
   Image: Image,
-  NameForma: NameForma
+  DecToHex: DecToHex,
+  ColorPicker: ColorPicker
 };

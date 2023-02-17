@@ -42,15 +42,56 @@ Color(0xff00ffa2)//100% opacity
 Color(0x3200ffa2)//50% opacity
 ```
 
+## RGB
+
+```kotlin
+Color(red = 255, green = 0, blue = 0, alpha = 255)
+```
+
+<Color color="#ff0000ff" width="180px" height="80px" margin="24px"/>
+
+## HSL
+
+```kotlin
+Color.hsl(hue = 50f, saturation = 0.5f, lightness = 0.5f, alpha = 1f)
+```
+
+<Color color="hsl(50, 50%, 50%)" width="180px" height="80px" margin="24px"/>
+
+## HSV
+
+```kotlin
+Color.hsl(hue = 50f, saturation = 0.5f, lightness = 0.5f, alpha = 1f)
+```
+
+<Color color="hsl(50, 50%, 50%)" width="180px" height="80px" margin="24px"/>
+
 ## Alpha/Opacity
+
+### Alpha by hex code
 
 If you are using `hex code` then control opacity directly via the first two hex digit.
 
-Color(0x`32`00ffa2)
+Color(0x`32`00ffa2)// here 32 is for 50% alpha
 
 <Color color="#00ffa232" width="180px" height="80px" margin="24px"/>
 
-<NameForma></NameForma>
+<DecToHex value="100"></DecToHex>
 
+### Alpha by copy extension
 
+You can set `alpha` by the following way as well:
+
+```kotlin
+Color.Red.copy(alpha = 0.5f)
+// or
+val myColor = Color.Red
+myColor.copy(alpha = 0.5f)
+```
+
+<Color color="#ff000032"/>
+
+This way you can put value in `0 to 1` range. For `50%` alpha you have to put `0.5`.
+
+<ColorPicker width="300" height="300"/>
 

@@ -18,3 +18,51 @@
    border-radius: 8px;
    box-shadow: 0px 0px 80px 2px #ffffff78;
  }
+
+.form{
+    border: 1px solid #808080;
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.inputBox{
+    padding: 6px;
+    font-size: 32px;
+    width: 69px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    color: #0084ff;
+}
+.inputSuffix{
+    font-size: 32px;
+}
+
+.inputHeading{
+    color: #0084ff;
+    font-weight: bold;
+}
+.outputHeading{
+    color: #00ab1f;
+    font-weight: bold;
+}
+.resultPara{
+    font-size: 32px;
+}
+.resultValue{
+    font-size: 32px;
+    color: #00ab1f;
+}
+
+.inputBox::-webkit-outer-spin-button,
+.inputBox::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.inputBox[type=number] {
+  -moz-appearance: textfield;
+}
