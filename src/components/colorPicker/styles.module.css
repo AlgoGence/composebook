@@ -1,7 +1,7 @@
 .slider {
     -webkit-appearance: none;
     width: calc(100% - 40px);
-    height: 10px;
+    height: 5px;
     border-radius: 5px;
     background: #d3d3d3;
     outline: none;
@@ -19,8 +19,8 @@
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     background: gray;
     cursor: pointer;
@@ -36,7 +36,7 @@
 
 .inputBox{
     padding: 6px;
-    font-size: 18px;
+    font-size: 12px;
     width: 69px;
     border: none;
     outline: none;
@@ -53,3 +53,41 @@
 .inputBox[type=number] {
     -moz-appearance: textfield;
 }
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    transition: color 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button.tablinks:hover {
+    color: rgb(0, 144, 0)
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.activeTablinks {
+    color: rgb(0, 144, 0);
+    border-bottom: 1px solid rgb(0, 144, 0);
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+

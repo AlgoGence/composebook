@@ -1,6 +1,6 @@
 import React from 'react'
-
-export default class HueSaturationPicker extends React.Component {
+import {ColorLib} from './ColorLib'
+export default class SaturationValuePicker extends React.Component {
     constructor(props) {
         super(props);
         this.canvasRef = React.createRef()
@@ -15,7 +15,6 @@ export default class HueSaturationPicker extends React.Component {
         this.ctx = this.canvas.getContext("2d")
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log(prevProps,prevState,snapshot)
         this.draw()
     }
     enableSelection(){
@@ -81,10 +80,17 @@ export default class HueSaturationPicker extends React.Component {
 
         this.ctx.beginPath();
         this.ctx.arc(pos[0], pos[1], 12, 0, 2 * Math.PI);
-        let rgb = hsvToRgb(this.props.hue, this.props.saturation, this.props.value)
-        this.ctx.fillStyle = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`
+
+        this.ctx.fillStyle = this.getFinalColor()
         this.ctx.fill()
         this.ctx.closePath();
+    }
+    getFinalColor(){
+        let h = this.props.hue
+        let s = this.props.saturation
+        let v = this.props.value
+        let [r,g,b] = ColorLib.hsvToRgb(h,s,v)
+        return `rgb(${r},${g},${b})`
     }
     render() {
         return <canvas
@@ -99,8 +105,9 @@ export default class HueSaturationPicker extends React.Component {
     }
 
     getCoreColor() {
-        let rgb = hsvToRgb(this.props.hue,1,1)
-        return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`
+        let h = this.props.hue
+        let css = `hsl(${h*360},100%,50%)`
+        return css
     }
 
     onMousePositionChange(e) {
@@ -114,36 +121,4 @@ export default class HueSaturationPicker extends React.Component {
         let v = 1 - hf
         this.props.onChange(s,v)
     }
-}
-function hsvToRgb(h, s, v) {
-    let r, g, b;
-
-    let i = Math.floor(h * 6);
-    let f = h * 6 - i;
-    let p = v * (1 - s);
-    let q = v * (1 - f * s);
-    let t = v * (1 - (1 - f) * s);
-
-    switch (i % 6) {
-        case 0:
-            r = v, g = t, b = p;
-            break;
-        case 1:
-            r = q, g = v, b = p;
-            break;
-        case 2:
-            r = p, g = v, b = t;
-            break;
-        case 3:
-            r = p, g = q, b = v;
-            break;
-        case 4:
-            r = t, g = p, b = v;
-            break;
-        case 5:
-            r = v, g = p, b = q;
-            break;
-    }
-
-    return [r * 255, g * 255, b * 255];
 }

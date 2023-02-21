@@ -26,16 +26,6 @@
     margin-top: 24px;
     margin-bottom: 24px;
 }
-
-.inputBox{
-    padding: 6px;
-    font-size: 32px;
-    width: 69px;
-    border: none;
-    outline: none;
-    border-radius: 8px;
-    color: #0084ff;
-}
 .inputSuffix{
     font-size: 32px;
 }
@@ -56,6 +46,16 @@
     color: #00ab1f;
 }
 
+
+.inputBox{
+    padding: 6px;
+    font-size: 32px;
+    width: 69px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    color: #0084ff;
+}
 .inputBox::-webkit-outer-spin-button,
 .inputBox::-webkit-inner-spin-button {
   -webkit-appearance: none;
