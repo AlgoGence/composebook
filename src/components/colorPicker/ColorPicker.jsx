@@ -36,9 +36,10 @@ export default class ColorPicker extends React.Component {
                 y: 100,
                 k: 0,
                 
-                a: 100,
+                a: 255,
 
-                hex: null
+                ahex: null,
+                hexa: null
             },
 
             
@@ -76,7 +77,8 @@ export default class ColorPicker extends React.Component {
     }
     onHSVChange(h,s,v){
         let c = this.state.color
-        c.hex = null
+        c.ahex = null
+        c.hexa = null
         let [r,g,b] = ColorLib.hsvToRgb(h,s,v)
         let [hh,ss,l] = ColorLib.rgbToHsl(r,g,b)
         let [cc,m,y,k] = ColorLib.rgbToCmyk(r,g,b)
@@ -95,7 +97,7 @@ export default class ColorPicker extends React.Component {
         c.m = m
         c.y = y
         c.k = k
-        this.hexEditing = false
+        
         this.setState({color:c})
     }
     componentDidMount() {
@@ -154,7 +156,7 @@ export default class ColorPicker extends React.Component {
     }
     css(){
         let c = this.state.color
-        return `rgba(${c.r},${c.g},${c.b},${c.a/100})`
+        return `rgba(${c.r},${c.g},${c.b},${c.a/255})`
     }
     HuePickerItem(){
         return <HuePicker
@@ -175,7 +177,8 @@ export default class ColorPicker extends React.Component {
     }
     onChannelChange(id,value,group){
         let c = this.state.color
-        c.hex = null
+        c.ahex = null
+        c.hexa = null
         if(id==='a'){
             c[id] = value
             this.setState({color:c})
@@ -195,7 +198,7 @@ export default class ColorPicker extends React.Component {
             c.m = m
             c.y = y
             c.k = k
-            this.hexEditing = false
+            
             this.setState({color:c})
         }
         else if(group==="CMYK"){
@@ -213,7 +216,7 @@ export default class ColorPicker extends React.Component {
 
             c.ss = ss
             c.l = l
-            this.hexEditing = false
+            
             this.setState({color:c})
         }
         else if(group==="RGB"){
@@ -230,7 +233,7 @@ export default class ColorPicker extends React.Component {
             c.m = m
             c.y = y
             c.k = k
-            this.hexEditing = false
+            
             this.setState({color:c})
         }
         else if(group==="HSL"){
@@ -247,7 +250,7 @@ export default class ColorPicker extends React.Component {
             c.m = m
             c.y = y
             c.k = k
-            this.hexEditing = false
+            
             this.setState({color:c})
         }
     }
@@ -279,6 +282,26 @@ export default class ColorPicker extends React.Component {
             </CodeBlock>
         </div>
     }
+    stripIndent(string) {
+        const indent = this.minIndent(string);
+    
+        if (indent === 0) {
+            return string;
+        }
+    
+        const regex = new RegExp(`^[ \\t]{${indent}}`, 'gm');
+    
+        return string.replace(regex, '');
+    }
+    minIndent(string){
+        const match = string.match(/^[ \t]*(?=\S)/gm);
+    
+        if (!match) {
+            return 0;
+        }
+    
+        return match.reduce((r, a) => Math.min(r, a.length), Infinity);
+    }
     RGBSection(){
         return <div>
             {this.Heading(`RGB(${this.state.color.r},${this.state.color.g},${this.state.color.b})`)}
@@ -288,9 +311,18 @@ export default class ColorPicker extends React.Component {
             {this.Gap(0,5)}
             {this.ChannelSeeker("B",65,0,255,"b",(i)=>{return parseInt(i)},1,"RGB")}
             {this.Gap(0,5)}
-            {this.Code(`Color(${this.state.color.r},${this.state.color.g},${this.state.color.b})`)}
+            {
+                this.Code(
+                    this.stripIndent(`
+                        Color(red = ${this.state.color.r}, green = ${this.state.color.g}, blue = ${this.state.color.b}, alpha = ${this.state.color.a})
+                    `).trim()
+                )
+            }
             
         </div>        
+    }
+    decimalRound(i){
+        return Math.round(i*100)/100
     }
     HSVSection(){
         return <div>
@@ -301,6 +333,13 @@ export default class ColorPicker extends React.Component {
             {this.Gap(0,5)}
             {this.ChannelSeeker("V",65,0,1,"v",(i)=>{return parseFloat(i)},0.001,"HSV")}
             {this.Gap(0,5)}
+            {
+                this.Code(
+                    this.stripIndent(`
+                        Color(hue = ${this.decimalRound(this.state.color.h)}f, saturation = ${this.decimalRound(this.state.color.s)}f, value = ${this.decimalRound(this.state.color.v)}f, alpha = ${this.decimalRound(this.state.color.a/255)}f)
+                    `).trim()
+                )
+            }
         </div>        
     }
     HSLSection(){
@@ -312,6 +351,13 @@ export default class ColorPicker extends React.Component {
             {this.Gap(0,5)}
             {this.ChannelSeeker("L",65,0,0.5,"l",(i)=>{return parseFloat(i)},0.001,"HSL")}
             {this.Gap(0,5)}
+            {
+                this.Code(
+                    this.stripIndent(`
+                        Color(hue = ${this.decimalRound(this.state.color.h)}f, saturation = ${this.decimalRound(this.state.color.ss)}f, lightness = ${this.decimalRound(this.state.color.l)}f, alpha = ${this.decimalRound(this.state.color.a/255)}f)
+                    `).trim()
+                )
+            }
         </div>        
     }
 
@@ -326,9 +372,29 @@ export default class ColorPicker extends React.Component {
             {this.Gap(0,5)}
             {this.ChannelSeeker("K",65,0,100,"k",(i)=>{return parseFloat(i)},1,"CMYK")}
             {this.Gap(0,5)}
+            {
+                this.Code(
+                    this.stripIndent(`
+                        // Paste this extension in a global scope only once
+                        // You don't have to do this every time
+                        fun Color.Companion.cmyk(c: Int, m: Int, y: Int, k: Int, a: Int): Color{
+                            val cc = (c / 100f)
+                            val mm = (m / 100f)
+                            val yy = (y / 100f)
+                            val kk = (k / 100f)
+                            val r = 255*(1-cc)*(1-kk)
+                            val g = 255*(1-mm)*(1-kk)
+                            val b = 255*(1-yy)*(1-kk)
+                            return Color(r.toInt(),g.toInt(),b.toInt(),a)
+                        }
+                        // Now use the following
+                        Color(c = ${parseInt(this.state.color.c)}, m = ${parseInt(this.state.color.m)}, y = ${parseInt(this.state.color.y)}, k = ${parseInt(this.state.color.k)}, a = ${parseInt(this.state.color.a)})
+                    `).trim()
+                )
+            }
         </div>        
     }
-    HexSection(){
+    AHEXSection(){
         return <div
             style={{
                 display: "flex",
@@ -336,6 +402,28 @@ export default class ColorPicker extends React.Component {
             }}
         >
             {this.Heading("HEX(AA RR GG BB)")}
+            <input
+                type="text"
+                value={this.ahexValue()}
+                onChange={this.onAHexInputChange}
+                className={styles.inputBox}
+                style={{
+                    fontSize: 24,
+                    width: "160px",
+                    fontFamily: "monospace"
+                }}
+            />
+        </div>
+        
+    }
+    HEXASection(){
+        return <div
+            style={{
+                display: "flex",
+                flexDirection: "row"
+            }}
+        >
+            {this.Heading("HEX(RR GG BB AA)")}
             <input
                 type="text"
                 value={this.hexaValue()}
@@ -355,15 +443,23 @@ export default class ColorPicker extends React.Component {
             {this.PreviewAndPicker()}
             {this.LineBreak()}
             {this.HuePickerItem()}
-            {this.ChannelSeeker("Alpha",65,0,100,"a",(i)=>{return parseInt(i)},1,"Alpha")}
-            {this.HexSection()}
+            {this.ChannelSeeker("Alpha",65,0,255,"a",(i)=>{return parseInt(i)},1,"Alpha")}
         </div>
+    }
+    HexSection(){
+        return <>
+            {this.Gap(0,5)}
+            {this.AHEXSection()}
+            {this.Gap(0,5)}
+            {this.HEXASection()}
+            {this.Gap(0,5)}
+        </>
     }
     onHexaInputChange = (e)=>{
         let c = this.state.color
-        c.hex = e.target.value
-        let result = ColorLib.hexaToRgba(c.hex)
-        if(c.hex.length !== 10|| result === null){
+        c.hexa = e.target.value
+        let result = ColorLib.hexaToRgba(c.hexa)
+        if(c.hexa.length !== 10|| result === null){
             this.setState({color: c})
             return
         }
@@ -372,12 +468,37 @@ export default class ColorPicker extends React.Component {
         c.r = r
         c.g = g
         c.b = b
-        c.hex = null   
+        c.hexa = null   
+        this.setState({color: c})
+    }
+    onAHexInputChange = (e)=>{
+        let c = this.state.color
+        c.ahex = e.target.value
+        let result = ColorLib.ahexToRgba(c.ahex)
+        if(c.ahex.length !== 10|| result === null){
+            this.setState({color: c})
+            return
+        }
+        let [a,r,g,b] = result
+        c.a = a
+        c.r = r
+        c.g = g
+        c.b = b
+        c.ahex = null   
         this.setState({color: c})
     }
     hexaValue=()=>{
-        if(typeof this.state.color.hex === "string"){
-            return this.state.color.hex
+        if(typeof this.state.color.hexa === "string"){
+            return this.state.color.hexa
+        }
+        let c = this.state.color
+        let hexa = ColorLib.rgbaToHex(c.r,c.g,c.b,c.a,true).toUpperCase()
+        return "0X"+hexa
+    }
+
+    ahexValue=()=>{
+        if(typeof this.state.color.ahex === "string"){
+            return this.state.color.ahex
         }
         let c = this.state.color
         return "0X"+ColorLib.rgbaToHex(c.r,c.g,c.b,c.a,false).toUpperCase()
@@ -396,8 +517,13 @@ export default class ColorPicker extends React.Component {
             case "CMYK": {
                 return <>{this.CMYKSection()}</>
             }
+            case "HEX": {
+                return <>{this.HexSection()}</>
+            }
             case "ALL": {
                 return <>
+                    {this.HexSection()}
+                    {this.Divider()}
                     {this.RGBSection()}
                     {this.Divider()}
                     {this.HSVSection()}
@@ -411,7 +537,6 @@ export default class ColorPicker extends React.Component {
         
     }
     onTabClick(group){
-        console.log(group)
         this.setState({selectedModel: group})
     }
     TabLink(group){
@@ -427,6 +552,7 @@ export default class ColorPicker extends React.Component {
             {this.TabLink("HSV")}
             {this.TabLink("HSL")}
             {this.TabLink("CMYK")}
+            {this.TabLink("HEX")}
             {this.TabLink("ALL")}
         </div>
     }

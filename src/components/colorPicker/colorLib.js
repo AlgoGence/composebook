@@ -230,14 +230,31 @@ export const ColorLib = {
             return v
         }
     },
-    hexaToRgba: function(hex){
-        console.log(hex)
+    ahexToRgba: function(hex){
         let x = hex.slice(0,2)
         let a = parseInt(hex.slice(2,4),16)
         let r = parseInt(hex.slice(4,6),16)
         let g = parseInt(hex.slice(6,8),16)
         let b = parseInt(hex.slice(8,10),16)
-        console.log(a,r,g,b)
+        if(
+            (x === "0x" || x === "0X") 
+            && (
+                !isNaN(a) 
+                && !isNaN(r) 
+                && !isNaN(g) 
+                && !isNaN(b)
+            )
+        ){
+            return [a,r,g,b]
+        }
+        return null
+    },
+    hexaToRgba: function(hex){
+        let x = hex.slice(0,2)
+        let r = parseInt(hex.slice(2,4),16)
+        let g = parseInt(hex.slice(4,6),16)
+        let b = parseInt(hex.slice(6,8),16)
+        let a = parseInt(hex.slice(8,10),16)
         if(
             (x === "0x" || x === "0X") 
             && (
