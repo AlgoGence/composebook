@@ -36,12 +36,12 @@ export default class ColorPicker extends React.Component {
                 y: 100,
                 k: 0,
                 
-                a: 100
+                a: 100,
+
+                hex: null
             },
 
-            hue: 0,
-            saturation: 1,
-            value: 1,
+            
 
             hueWidth: 0,
             hueHeight: this.config.hueHeight,
@@ -76,7 +76,7 @@ export default class ColorPicker extends React.Component {
     }
     onHSVChange(h,s,v){
         let c = this.state.color
-
+        c.hex = null
         let [r,g,b] = ColorLib.hsvToRgb(h,s,v)
         let [hh,ss,l] = ColorLib.rgbToHsl(r,g,b)
         let [cc,m,y,k] = ColorLib.rgbToCmyk(r,g,b)
@@ -95,6 +95,7 @@ export default class ColorPicker extends React.Component {
         c.m = m
         c.y = y
         c.k = k
+        this.hexEditing = false
         this.setState({color:c})
     }
     componentDidMount() {
@@ -127,7 +128,8 @@ export default class ColorPicker extends React.Component {
     Heading(text){
         return <h2
             style={{
-                margin: "16px"
+                margin: "16px",
+                fontFamily: "monospace"
             }}
         >
             {text}
@@ -136,7 +138,7 @@ export default class ColorPicker extends React.Component {
     SaturationValuePickerItem(){
         return <SaturationValuePicker
             width={this.state.pickerWidth}
-            height={this.state.pickerHeight}
+            height={this.state.pickerHeight} please I love you
             hue={this.state.color.h}
             saturation={this.state.color.s}
             value={this.state.color.v}
@@ -172,13 +174,13 @@ export default class ColorPicker extends React.Component {
         return <br/>
     }
     onChannelChange(id,value,group){
+        let c = this.state.color
+        c.hex = null
         if(id==='a'){
-            let c = this.state.color
             c[id] = value
             this.setState({color:c})
         }
         else if(group==="HSV"){
-            let c = this.state.color
             c[id] = value
             let [r,g,b] = ColorLib.hsvToRgb(c.h,c.s,c.v)
             let [h,ss,l] = ColorLib.rgbToHsl(r,g,b)
@@ -193,10 +195,10 @@ export default class ColorPicker extends React.Component {
             c.m = m
             c.y = y
             c.k = k
+            this.hexEditing = false
             this.setState({color:c})
         }
         else if(group==="CMYK"){
-            let c = this.state.color
             c[id] = value
             let [r,g,b] = ColorLib.cmykToRgb(c.c,c.m,c.y,c.k)
             let [h,s,v] = ColorLib.rgbToHsv(r,g,b)
@@ -211,10 +213,10 @@ export default class ColorPicker extends React.Component {
 
             c.ss = ss
             c.l = l
+            this.hexEditing = false
             this.setState({color:c})
         }
         else if(group==="RGB"){
-            let c = this.state.color
             c[id] = value
             let [h,s,v] = ColorLib.rgbToHsv(c.r,c.g,c.b)
             let [hh,ss,l] = ColorLib.rgbToHsl(c.r,c.g,c.b)
@@ -228,10 +230,10 @@ export default class ColorPicker extends React.Component {
             c.m = m
             c.y = y
             c.k = k
+            this.hexEditing = false
             this.setState({color:c})
         }
         else if(group==="HSL"){
-            let c = this.state.color
             c[id] = value
             let [r,g,b] = ColorLib.hslToRgb(c.h,c.ss,c.l)
             let [h,s,v] = ColorLib.rgbToHsv(r,g,b)
@@ -245,6 +247,7 @@ export default class ColorPicker extends React.Component {
             c.m = m
             c.y = y
             c.k = k
+            this.hexEditing = false
             this.setState({color:c})
         }
     }
@@ -325,13 +328,59 @@ export default class ColorPicker extends React.Component {
             {this.Gap(0,5)}
         </div>        
     }
+    HexSection(){
+        return <div
+            style={{
+                display: "flex",
+                flexDirection: "row"
+            }}
+        >
+            {this.Heading("HEX(AA RR GG BB)")}
+            <input
+                type="text"
+                value={this.hexaValue()}
+                onChange={this.onHexaInputChange}
+                className={styles.inputBox}
+                style={{
+                    fontSize: 24,
+                    width: "160px",
+                    fontFamily: "monospace"
+                }}
+            />
+        </div>
+        
+    }
     PickerSection(){
         return <div>
             {this.PreviewAndPicker()}
             {this.LineBreak()}
             {this.HuePickerItem()}
             {this.ChannelSeeker("Alpha",65,0,100,"a",(i)=>{return parseInt(i)},1,"Alpha")}
+            {this.HexSection()}
         </div>
+    }
+    onHexaInputChange = (e)=>{
+        let c = this.state.color
+        c.hex = e.target.value
+        let result = ColorLib.hexaToRgba(c.hex)
+        if(c.hex.length !== 10|| result === null){
+            this.setState({color: c})
+            return
+        }
+        let [a,r,g,b] = result
+        c.a = a
+        c.r = r
+        c.g = g
+        c.b = b
+        c.hex = null   
+        this.setState({color: c})
+    }
+    hexaValue=()=>{
+        if(typeof this.state.color.hex === "string"){
+            return this.state.color.hex
+        }
+        let c = this.state.color
+        return "0X"+ColorLib.rgbaToHex(c.r,c.g,c.b,c.a,false).toUpperCase()
     }
     SlidersSection(){
         switch(this.state.selectedModel){
@@ -392,9 +441,5 @@ export default class ColorPicker extends React.Component {
             {this.SlidersSection(0)}
         </div>
 
-    }
-    previewColor(){
-        let [r,g,b] = ColorLib.hsvToRgb(this.state.hue, this.state.saturation, this.state.value)
-        return ColorLib.rgbString(r,g,b)
     }
 }

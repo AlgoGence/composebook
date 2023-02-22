@@ -7,6 +7,10 @@ export default class ColorPreview extends React.Component {
     }
     render() {
         return <div
+            style={{
+                width: this.props.width,
+                height: this.props.height
+            }}
         >
             <CheckerBoard 
                 width={this.props.width} 

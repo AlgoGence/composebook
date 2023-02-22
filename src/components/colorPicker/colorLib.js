@@ -210,5 +210,45 @@ export const ColorLib = {
         }
         
         return [r,g,b]
+    },
+    rgbaToHex: function(r,g,b,a,hexa=true){
+        let hex = this.decToHex(r)+this.decToHex(g)+this.decToHex(b)
+        let alpha = this.decToHex(a)
+        if(hexa){
+            return hex + alpha
+        }
+        else{
+            return alpha + hex
+        }
+    },
+    decToHex: function (input){
+        let v = parseInt(input).toString(16);
+        if(v.length == 1){
+            return "0"+v
+        }
+        else{
+            return v
+        }
+    },
+    hexaToRgba: function(hex){
+        console.log(hex)
+        let x = hex.slice(0,2)
+        let a = parseInt(hex.slice(2,4),16)
+        let r = parseInt(hex.slice(4,6),16)
+        let g = parseInt(hex.slice(6,8),16)
+        let b = parseInt(hex.slice(8,10),16)
+        console.log(a,r,g,b)
+        if(
+            (x === "0x" || x === "0X") 
+            && (
+                !isNaN(a) 
+                && !isNaN(r) 
+                && !isNaN(g) 
+                && !isNaN(b)
+            )
+        ){
+            return [a,r,g,b]
+        }
+        return null
     }
 }

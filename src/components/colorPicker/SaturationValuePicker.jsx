@@ -101,6 +101,9 @@ export default class SaturationValuePicker extends React.Component {
             onMouseLeave={this.onCanvasMouseLeave}
             width={this.props.width}
             height={this.props.height}
+            style={{
+                position: "relative"
+            }}
         />
     }
 
